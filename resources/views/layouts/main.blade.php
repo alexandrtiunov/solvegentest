@@ -9,12 +9,12 @@
     @show
 
     @section('link')
-        <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+        <link href="{{ URL::to('css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
         <!-- jQuery (necessary JavaScript plugins) -->
-        <script type='text/javascript' src="js/jquery-1.11.1.min.js"></script>
+        <script type='text/javascript' src="{{ URL::to('js/jquery-1.11.1.min.js')}}"></script>
         <!-- Custom Theme files -->
-        <link href="css/style.css" rel='stylesheet' type='text/css' />
-        <link href="css/main.css" rel='stylesheet' type='text/css' />
+        <link href="{{ URL::to('css/style.css')}}" rel='stylesheet' type='text/css' />
+        <link href="{{ URL::to('css/main.css')}}" rel='stylesheet' type='text/css' />
         <!-- Custom Theme files -->
         <!--//theme-style-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,11 +25,12 @@
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
         <!-- start menu -->
-        <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
-        <script type="text/javascript" src="js/megamenu.js"></script>
+        <link href="{{ URL::to('css/megamenu.css')}}" rel="stylesheet" type="text/css" media="all" />
+        <script type="text/javascript" src="{{ URL::to('js/megamenu.js')}}"></script>
         <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
-        <script src="js/menu_jquery.js"></script>
-        <script src="js/simpleCart.min.js"> </script>
+        <script src="{{ URL::to('js/menu_jquery.js')}}"></script>
+        <script src="{{ URL::to('js/simpleCart.min.js')}}"> </script>
+        <script src="{{ URL::to('js/main.js')}}"> </script>
     @show
 
     @section('style')
@@ -44,6 +45,7 @@
     <div class="container">
         <div class="header_top">
             <div class="top_right">
+                <a href="/products"> На главную </a>
                 {{--<ul>--}}
                     {{--<li><a href="#">help</a></li>|--}}
                     {{--<li><a href="contact.html">Contact</a></li>|--}}
@@ -72,7 +74,8 @@
                     <div class="rgt-bottom">
                         <div class="log">
                             <div class="login" >
-                                <div id="loginContainer"><a href="{{ route('login') }}" id="loginButton"><span>Войти</span></a>
+                                <div id="loginContainer">
+                                    <a href="{{ route('login') }}" id="loginButton"><span>Войти</span></a>
                                     {{--<div id="loginBox">--}}
                                         {{--<form id="loginForm">--}}
                                             {{--<fieldset id="body">--}}
@@ -102,11 +105,22 @@
                                 </h5>
                             <div>
                                 <table >
+                                    <td><a href="{{action('Admin\ProductController@index')}}" class="btn btn-primary">Управление товарами</a></td>
                                     <td><a href="{{action('Admin\ProductController@create')}}" class="btn btn-primary">Добавить товар</a></td>
                                     <td><a href="{{action ('Admin\CategoryController@create')}}" class="btn btn-primary">Добавить категорию</a></td>
                                 </table>
                             </div>
-                                <a href="{{route ('logout')}}">Выйти</a>
+                            <div >
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    Выйти
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
                             @endguest
                         {{--<div class="cart box_1">--}}
                             {{--<a href="checkout.html">--}}

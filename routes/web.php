@@ -11,11 +11,17 @@
 |
 */
 
-Route::get('/', 'IndexController@index');
-Route::get('/{category_id}/{product_id}', 'IndexController@detail');
+Route::get('/products/{category_short_name?}', 'IndexController@index');
+//Route::post('/products');
+Route::get('/products/{category_short_name}/{product_id}', 'IndexController@detail');
 
-Route::get('/create', 'Admin\ProductController@create');
-Route::post('/create', 'Admin\ProductController@store');
+//Route::get('/create', 'Admin\ProductController@create');
+//Route::post('/create', 'Admin\ProductController@store');
+
+Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function (){
+    Route::resource('/products', 'Admin\ProductController');
+
+});
 
 Route::get('/addcategory', 'Admin\CategoryController@create');
 Route::post('/addcategory', 'Admin\CategoryController@store');
