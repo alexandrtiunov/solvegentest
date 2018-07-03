@@ -213,7 +213,8 @@
             <div class="col-md-4"></div>
             <div class="form-group col-md-4">
                 <button type="submit" class="btn btn" style="margin-left:0px">Добавить категорию</button>
-                <a href="{{action('IndexController@index')}}" class="btn btn-default">Назад</a></td>
+                <a href="{{action('Admin\CategoryController@index')}}" class="btn btn-default">Назад</a>
+                <a href="{{action('IndexController@index')}}" class="btn btn-default">Товары</a>
             </div>
         </div>
     </form>

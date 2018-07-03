@@ -16,18 +16,18 @@
                             <img class="etalage_source_image" src="images/d1.jpg" class="img-responsive" title=""/>
                         </a>
                     </li>
-                    <li>
-                        <img class="etalage_thumb_image" src="images/d2.jpg" class="img-responsive"/>
-                        <img class="etalage_source_image" src="images/d2.jpg" class="img-responsive" title=""/>
-                    </li>
-                    <li>
-                        <img class="etalage_thumb_image" src="images/d3.jpg" class="img-responsive"/>
-                        <img class="etalage_source_image" src="images/d3.jpg" class="img-responsive"/>
-                    </li>
-                    <li>
-                        <img class="etalage_thumb_image" src="images/d4.jpg" class="img-responsive"/>
-                        <img class="etalage_source_image" src="images/d4.jpg" class="img-responsive"/>
-                    </li>
+                    {{--<li>--}}
+                        {{--<img class="etalage_thumb_image" src="images/d2.jpg" class="img-responsive"/>--}}
+                        {{--<img class="etalage_source_image" src="images/d2.jpg" class="img-responsive" title=""/>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<img class="etalage_thumb_image" src="images/d3.jpg" class="img-responsive"/>--}}
+                        {{--<img class="etalage_source_image" src="images/d3.jpg" class="img-responsive"/>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<img class="etalage_thumb_image" src="images/d4.jpg" class="img-responsive"/>--}}
+                        {{--<img class="etalage_source_image" src="images/d4.jpg" class="img-responsive"/>--}}
+                    {{--</li>--}}
                 </ul>
                 <div class="clearfix"></div>
             </div>

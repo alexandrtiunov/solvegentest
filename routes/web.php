@@ -21,10 +21,12 @@ Route::get('/products/{category_short_name}/{product_id}', 'IndexController@deta
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth']], function (){
     Route::resource('/products', 'Admin\ProductController');
 
+    Route::resource('/categories', 'Admin\CategoryController');
+
 });
 
-Route::get('/addcategory', 'Admin\CategoryController@create');
-Route::post('/addcategory', 'Admin\CategoryController@store');
+//Route::get('/addcategory', 'Admin\CategoryController@create');
+//Route::post('/addcategory', 'Admin\CategoryController@store');
 
 Auth::routes();
 

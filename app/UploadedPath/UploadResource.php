@@ -14,24 +14,14 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class UploadResource
 {
-    public static function pathToUpload(Request $request)
-    {
-
-        $file = $request->file('path');
-        $mimeType = $file->getMimeType();
-        $user_email = ($request->email);
-
-        if ($mimeType == 'image/jpeg') {
-            return $pathToUpload = '/resource/' . $user_email . '/images/';
-        } else {
-            return 'error.';
-        }
-    }
-
+    /*
+     * Get path to upload file
+     *
+     * @return string
+     */
     public static function pathToPreview($product){
 
         $img = Image::make(public_path() . '/images/product-foto-main/' . $product['img_path'])->resize(200, 300);
-//        dd($img->basename);
         $img->basename = $img->filename . '_W-200_' . ' H-200' . '.jpg';
         $pathToPreview =  $img->basename;
         $productPathPreview = str_replace(' ', '_', $product['model']);

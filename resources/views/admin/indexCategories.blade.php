@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Управление товарами</title>
+    <title>Управление категориями</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -192,12 +192,12 @@
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-5">
-                    <h2>Product <b>Management</b></h2>
+                    <h2>Categories <b>Management</b></h2>
                 </div>
                 <div class="col-sm-7">
                     <table>
                         {{--<td>--}}
-                            {{--<a href="{{action('Admin\NewsController@create')}}" class="btn btn-primary"> <span>Add New News</span></a>--}}
+                        {{--<a href="{{action('Admin\NewsController@create')}}" class="btn btn-primary"> <span>Add New News</span></a>--}}
                         {{--</td>--}}
                         <td>
                             @guest
@@ -209,9 +209,8 @@
                                 </h5>
                                 <div>
                                     <table >
-                                        <td><a href="{{action('Admin\ProductController@create')}}" class="btn btn-primary">Добавить товар</a></td>
-                                        {{--<td><a href="{{action ('Admin\CategoryController@create')}}" class="btn btn-primary">Добавить категорию</a></td>--}}
-                                        <td><a href="{{action ('Admin\CategoryController@index')}}" class="btn btn-primary">Упраление категориями</a></td>
+                                        <td><a href="{{action ('Admin\CategoryController@create')}}" class="btn btn-primary">Добавить категорию</a></td>
+                                        <td><a href="{{action('Admin\ProductController@index')}}" class="btn btn-primary">Управление товарами</a></td>
                                         <td><a href="{{action ('IndexController@index')}}" class="btn btn-primary">Товары</a></td>
                                     </table>
                                 </div>
@@ -236,35 +235,27 @@
             <thead>
             <tr>
                 <th>Id</th>
-                <th>Тип продукта</th>
-                {{--<th>Краткое название</th>--}}
-                <th>Модель</th>
-                <th>Производитель</th>
-                <th>Описание</th>
-                <th>Категория</th>
+                <th>Тип категории</th>
+                <th>Название латиницей</th>
                 {{--<th>Date Created</th>--}}
                 <th>Action</th>
             </tr>
             </thead>
-            @foreach ($products as $product)
+            @foreach ($categories as $category)
                 <tbody>
                 <tr>
-                    <td>{{$product['id']}}</td>
-                    <td>{{$product['type']}}</td>
-                    <td>{{$product['model']}}</td>
-                    <td>{{$product['manufacturer']}}</td>
-                    <td>{{$product['discription']}}</td>
-                    <td>{{$product->category->title}}</td>
-                    {{--<td>{{$item['img_path']}}</td>--}}
+                    <td>{{$category['id']}}</td>
+                    <td>{{$category['title']}}</td>
+                    <td>{{$category['short_name']}}</td>
                     <td>
-                        <a href="{{action('Admin\ProductController@edit', $product['id'])}}" class="settings" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                        <a href="{{action('Admin\CategoryController@edit', $category['id'])}}" class="settings" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
 
                         {{--<a href="" class="settings" title="picture" data-toggle="tooltip"><i class="material-icons">&#xe439;</i></a>--}}
 
-                        <form  action="{{action('Admin\ProductController@destroy', $product['id'])}}" method="post">
+                        <form  action="{{action('Admin\CategoryController@destroy', $category['id'])}}" method="post">
                             {{csrf_field()}}
                             <input name="_method" type="hidden" value="DELETE">
-                            <button type="submit" class="delete" title="Delete" data-toggle="tooltip" onclick="if(confirm('Подтвердить удаление товара!!!'))submit();else return false;">
+                            <button type="submit" class="delete" title="Delete" data-toggle="tooltip" onclick="if(confirm('Подтвердить удаление категории!!!'))submit();else return false;">
                                 <i class="material-icons">&#xE5C9;</i></button>
                         </form>
                     </td>

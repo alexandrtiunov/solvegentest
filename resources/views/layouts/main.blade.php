@@ -96,18 +96,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="reg">
-                            <a href="{{ route('register') }}">Зарегистрироваться</a>
-                        </div>
+                        {{--<div class="reg">--}}
+                            {{--<a href="{{ route('register') }}">Зарегистрироваться</a>--}}
+                        {{--</div>--}}
                         @else
                                 <h5>
                                     Вы вошли как, {{ Auth::user()->name }}
                                 </h5>
                             <div>
-                                <table >
-                                    <td><a href="{{action('Admin\ProductController@index')}}" class="btn btn-primary">Управление товарами</a></td>
-                                    <td><a href="{{action('Admin\ProductController@create')}}" class="btn btn-primary">Добавить товар</a></td>
-                                    <td><a href="{{action ('Admin\CategoryController@create')}}" class="btn btn-primary">Добавить категорию</a></td>
+                                <table>
+                                    <tr>
+                                        <td><a href="{{action('Admin\ProductController@index')}}" class="btn btn-primary">Управление товарами</a></td>
+                                        <td><a href="{{action ('Admin\CategoryController@index')}}" class="btn btn-primary">Упраление категориями</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="{{action ('Admin\ProductController@create')}}" class="btn btn-primary">Добавить товар</a></td>
+                                        <td><a href="{{action ('Admin\CategoryController@create')}}" class="btn btn-primary">Добавить категорию</a></td>
+                                    </tr>
                                 </table>
                             </div>
                             <div >

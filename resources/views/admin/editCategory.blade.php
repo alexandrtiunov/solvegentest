@@ -177,7 +177,7 @@
 </head>
 <body>
 <div class="container">
-    <h2 align="center">Добавить новый товар</h2><br  />
+    <h2 align="center">Изменить категорию "{{$category->title }}"</h2><br  />
     {{--===error check===--}}
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -194,66 +194,26 @@
         </div><br />
     @endif
     {{--===error check===--}}
-    <form  method="post" action="{{action('Admin\ProductController@store')}}" enctype="multipart/form-data" >
+    <form  method="post" action="{{action('Admin\CategoryController@update', $category->id)}}"  >
         {{csrf_field()}}
         <div class="row">
             <div class="col-md-4"></div>
             <div class="form-group col-md-4">
-                <label for="title">Тип товара:</label>
-                <input type="text" class="form-control" name="type" placeholder="Пример: принтер" >
+                <label for="title">Название категории:</label>
+                <input type="text" class="form-control" name="title" value="{{$category->title}}" required>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4"></div>
-            <div class="form-group col-md-4">Модель товара:</label>
-                <input type="text" class="form-control" name="model" >
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="form-group col-md-4">Производитель:</label>
-                <input type="text" class="form-control" name="manufacturer" placeholder="Пример: Philips" >
+            <div class="form-group col-md-4">Название латиницей:</label>
+                <input type="text" class="form-control" name="short_name" value="{{$category->short_name}}" required>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4"></div>
             <div class="form-group col-md-4">
-                <label for="discription">Полное описание товара:</label>
-                <input type="text" class="form-control" name="discription" placeholder="Type content" >
-            </div>
-        </div>
-        {{--<div class="row">--}}
-            {{--<div class="col-md-4"></div>--}}
-            {{--<div class="form-group col-md-4">--}}
-                {{--<label for="short_discription">Краткое описание товара:</label>--}}
-                {{--<input type="text" class="form-control" name="short_discription" placeholder="До 100 символов" >--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="form-group col-md-4">
-                <label for="img_path">Картинка:</label>
-                <input type="file" class="form-control" name="img_path" >
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="form-group col-md-4">
-                <label for="category_id">Категория:</label>
-                <select size="1" id="role" class="form-control" name="category_id" required>
-                    <option value="">Выбери категорию товара</option>
-                    @foreach($categories as $category)
-                        <option value="{{$category->id}}">{{$category->title}}</option>
-                    @endforeach
-                </select>
-                <a href="{{action ('Admin\CategoryController@create')}}">Добавить новую категорию</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="form-group col-md-4">
-                <button type="submit" class="btn btn" style="margin-left:0px">Добавить товар</button>
-                <a href="{{action('Admin\ProductController@index')}}" class="btn btn-default">Назад</a>
+                <button type="submit" class="btn btn" style="margin-left:0px">Добавить категорию</button>
+                <a href="{{action('Admin\CategoryController@index')}}" class="btn btn-default">Назад</a>
                 <a href="{{action('IndexController@index')}}" class="btn btn-default">Товары</a>
             </div>
         </div>
